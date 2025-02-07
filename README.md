@@ -1,5 +1,7 @@
-# Horse Race
+# Object Oriented Horse Race
 Get ready... To LOSE... AGAIN!!!
+
+![Diagram](CodeDiagram.svg)
 
 ## Classes
 
