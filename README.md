@@ -1,5 +1,5 @@
 # Horse Race
-Get ready... To LOSE!!!
+Get ready... To LOSE... AGAIN!!!
 
 ## Constants
 ```
