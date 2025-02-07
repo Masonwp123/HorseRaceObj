@@ -1,63 +1,104 @@
 # Horse Race
 Get ready... To LOSE... AGAIN!!!
 
-## Constants
+## Classes
+
+### **main.cpp**
+make variable race of type Race
+call Race.run()
+
+### **horse.h**
 ```
-Make a constant int NUM_HORSES
-Make a constant int TRACK_LENGTH
+class Horse:
+
++Horse()
++void init(int inId, int inTrackLength)
++void advance()
++void printLane()
++bool isWinner()
+
+-int position
+-int trackLength
+-int id
 ```
 
-## Functions
+### **horse.cpp**
+
+**Horse()**
+```
+function Horse():
+    set position to 0
+    set trackLength to 0
+    set id to -1
+```
+
+**init**
+```
+function init(int inId, int inTrackLength):
+    set id to inId
+    set trackLength to inTrackLength
+```
 
 **advance**
-will only advance if ran is >= 0.5 (so 1/2 chance to move)
 ```
-  horseArray is array of int
-  horseNum is int
-  function advance (horseNum, horseArray): 
-    float ran = randomfloat(0.0, 2.0)
-    horseArray[horseNum] += round(ran)
+function advance():
+    make int random with randomfloat(0.0, 2.0)
+    round random to int    
+    add random to position
 ```
 
 **printLane**
 ```
-  horseArray is array of int
-  horseNum is int
-  function printLane (horseNum, horseArray):
-    horsePos = horseArray[horseNum]
+function printLane():
     for 0 to TRACK_LENGTH:
-      if loop index is equal to horseNum:
-        print horseNum
-        continue
-      print "."
+        if loop index is equal to position:
+            print id
+            continue
+        print "."
 ```
 
 **isWinner**
 ```
-  horseArray is array of int
-  horseNum is int
-  function isWinner (horseNum, horseArray):
-    horsePos = horseArray[horseNum]
-    if horsePos is greater than or equal to TRACK_LENGTH - 1:
-        return true
-    return false
+function isWinner():
+    return position is greater than or equal to trackLength + 1
 ```
 
-**main**
+### **race.h**
 ```
-  function main ():
+class Race:
+
++Race()
++void run()
+
+-int TRACK_LENGTH
+-int MAX_HORSES
+-Horse horses[Max_HORSES]
+```
+
+### **race.cpp**
+
+**Race()**
+```
+function Race():
+    for 0 to MAX_HORSES:
+        Horse horse = horses[loop index]
+        call horse.init(loop index, TRACK_LENGTH)
+        call horse.printLane() 
+```
+
+**run**
+```
+function run():
     set keepGoing to true
-    
     while keepGoing:
-      for each horse in array:
-        call advance for horse
-        call printLane for horse
-        if call isWinner for horse:
-          set keepGoing to false
-        ask user for input for next turn
-    for each horse in array:
-      if call isWinner for horse:
-        print end message for winningHorse
-        return
+        ask user for input to continue
+        for each horse in horses:
+            call horse.advance()
+            call horse.printLane()
+            if call horse.isWinner():
+                set keepGoing to false
+    for each horse in horses:
+        if call horse.isWinner():
+            print "Horse " + loop index + " Won!"
+            ask user for input to end
 ```
-
