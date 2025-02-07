@@ -4,8 +4,10 @@ Get ready... To LOSE... AGAIN!!!
 ## Classes
 
 ### **main.cpp**
+```
 make variable race of type Race
 call Race.run()
+```
 
 ### **horse.h**
 ```
